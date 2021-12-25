@@ -3,7 +3,7 @@ class CreatePostCommnets < ActiveRecord::Migration[5.2]
     create_table :post_commnets do |t|
       t.text :comment
       t.integer :user_id
-      t.integer :post_image_id
+      t.integer :book_id
 
       t.timestamps
     end
