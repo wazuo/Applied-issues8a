@@ -40,6 +40,22 @@
             <% end %>
           </td>
           <% end %>
+          <td>
+            <p>コメント数: <%= @book.post_comments.count %></p>
+            <% @book.post_comments.each do |post_comment| %>
+              <p>
+              <%= attachment_image_tag(post_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+              <%= post_comment.user.name%>
+              <%= post_comment.comment %>
+              </p>
+            <% end%>
+          </td>
+          <td>
+          <%= form_with(model:[@book,@post_comment], local: true) do |f| %>
+            <%= f.text_area :comment, rows:'5'%>
+            <%= f.submit"送信"%>
+          <% end %>
+          </td>
         </tr>
       </table>
     </div>
