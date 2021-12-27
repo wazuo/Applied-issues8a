@@ -42,22 +42,27 @@
           <% end %>
           <td>
             <p>コメント数: <%= @book.post_comments.count %></p>
+          </td>
+        </tr>
+      </table>
             <% @book.post_comments.each do |post_comment| %>
               <p>
               <%= attachment_image_tag(post_comment.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
-              <%= post_comment.user.name%>
               <%= post_comment.comment %>
+              <% if post_comment.user == current_user %>
+                  <%= link_to "Destroy", book_post_comment_path(post_comment.book, post_comment), data: { confirm: '本当に消しますか？' },method: :delete, class: "btn btn-sm btn-danger"%>
+              <% end %> <br>
+              <%= link_to user_path(post_comment.user) do %>
+                <%= post_comment.user.name%>
+              <% end %>
               </p>
             <% end%>
           </td>
           <td>
           <%= form_with(model:[@book,@post_comment], local: true) do |f| %>
-            <%= f.text_area :comment, rows:'5'%>
+            <%= f.text_area :comment, class: "comment"%> <br>
             <%= f.submit"送信"%>
           <% end %>
-          </td>
-        </tr>
-      </table>
     </div>
   </div>
 </div>
