@@ -8,6 +8,8 @@ class User < ApplicationRecord
   attachment :profile_image, destroy: false
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :followers,  class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum: 50}
