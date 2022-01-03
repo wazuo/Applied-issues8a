@@ -11,6 +11,6 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-  post 'follow/:id' => 'relationships#follow', as: 'follow'
-  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
+  post 'follow/:id' => 'relationships#create', as: 'follow'
+  post 'unfollow/:id' => 'relationships#destroy', as: 'unfollow'
 end
