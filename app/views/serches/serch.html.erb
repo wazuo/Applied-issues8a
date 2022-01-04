@@ -1,0 +1,7 @@
+<% if @model == 'user' %>
+  <h3>Users serch_for "<%= @content%>"</h3>
+  <%= render 'users/index', users: @records%>
+<% elsif @model == 'book' %>
+  <h3>Book serch_for "<%= @content%></h3>
+  <%= render 'books/index', books: @records%>
+<% end %>
