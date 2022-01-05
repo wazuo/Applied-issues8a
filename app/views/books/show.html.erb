@@ -31,8 +31,10 @@
           <td id="favorite-btn_<%=@book.id %>"><%= render "favorites/favorite-btn", book: @book %></td>
         </tr>
       </table>
-      <%= render "book_comments/index",book: @book%>
-      <%= render "book_comments/form", book: @book,book_comment: @book_comment%>
+      <div class="comment-area">
+        <%= render "book_comments/index",book: @book%>
+      </div>
+        <%= render "book_comments/form", book: @book,book_comment: @book_comment%>
     </div>
   </div>
 </div>
