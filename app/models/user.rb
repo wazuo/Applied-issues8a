@@ -8,6 +8,7 @@ class User < ApplicationRecord
   attachment :profile_image, destroy: false
   has_many :book_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_books,through: :favorites, source: :book
   has_many :followers, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followeds, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
@@ -26,7 +27,7 @@ class User < ApplicationRecord
   def following?(user)
     following_user.include?(user)
   end
-  
+
   def self.serch_for(content,method)
     if method == 'perfect'
       User.where(name: content)
