@@ -25,7 +25,7 @@
             <%= link_to 'Destroy', book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%>
           </td>
           <% end %>
-          <td>
+          <td class = "comments-count">
             <p>コメント数: <%= @book.book_comments.count %></p>
           </td>
           <td id="favorite-btn_<%=@book.id %>"><%= render "favorites/favorite-btn", book: @book %></td>
